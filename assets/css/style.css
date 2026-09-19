@@ -1,0 +1,408 @@
+/* assets/css/style.css - Raj Residency Imperial Royal Maroon & Bronze Gold Theme */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap');
+
+:root {
+  --font-serif: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  --font-royal: 'Cinzel', serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  
+  /* Imperial Royal Maroon & Burgundy */
+  --color-royal-maroon: #2b0e14;
+  --color-dark-maroon: #1c080d;
+  --color-accent-maroon: #3d141d;
+  --color-wine-maroon: #4a1923;
+  
+  /* Warm Bronze & Champagne Gold */
+  --color-gold: #d4a359;
+  --color-gold-light: #f3cf8a;
+  --color-gold-dark: #b88738;
+  --color-gold-glow: rgba(212, 163, 89, 0.45);
+  
+  /* Warm Ivory Canvas */
+  --color-ivory: #fcfaf7;
+  --color-linen: #f5efe6;
+  --color-canvas-bg: #fbf9f5;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: #2e2624;
+  background-color: var(--color-canvas-bg);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, .font-serif {
+  font-family: var(--font-serif);
+  letter-spacing: -0.01em;
+}
+
+.font-royal {
+  font-family: var(--font-royal);
+}
+
+/* Backgrounds */
+.bg-royal-maroon {
+  background-color: #2b0e14;
+}
+
+.bg-dark-maroon {
+  background-color: #1c080d;
+}
+
+.bg-accent-maroon {
+  background-color: #3d141d;
+}
+
+.bg-ivory-linen {
+  background-color: #f5efe6;
+}
+
+/* Luxury Bronze Gold Buttons */
+.btn-gold {
+  background: linear-gradient(135deg, #f0c57c 0%, #d4a359 50%, #b88738 100%);
+  color: #1c080d;
+  font-weight: 700;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 10px 25px -5px rgba(212, 163, 89, 0.45);
+}
+
+.btn-gold:hover {
+  background: linear-gradient(135deg, #f7dca3 0%, #e5b869 50%, #c59343 100%);
+  box-shadow: 0 14px 32px -4px rgba(212, 163, 89, 0.7);
+  transform: translateY(-2px);
+  color: #100407;
+}
+
+.btn-ghost-gold {
+  background-color: transparent;
+  color: #f3cf8a;
+  border: 1.5px solid rgba(212, 163, 89, 0.6);
+  transition: all 0.3s ease;
+}
+
+.btn-ghost-gold:hover {
+  background-color: rgba(212, 163, 89, 0.18);
+  border-color: #f3cf8a;
+  color: #ffffff;
+}
+
+.btn-maroon {
+  background: linear-gradient(135deg, #3d141d 0%, #2b0e14 100%);
+  color: #f3cf8a;
+  border: 1px solid rgba(212, 163, 89, 0.3);
+  transition: all 0.3s ease;
+}
+
+.btn-maroon:hover {
+  background: linear-gradient(135deg, #4a1923 0%, #351119 100%);
+  color: #ffffff;
+  border-color: #d4a359;
+}
+
+/* Hero Background Crossfade Slider */
+.hero-bg-slider {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transform: scale(1.08);
+  transition: opacity 1.8s cubic-bezier(0.4, 0, 0.2, 1), transform 6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.hero-slide.active {
+  opacity: 0.32;
+  transform: scale(1);
+  z-index: 1;
+}
+
+/* 🏛️ Royal Archway (Jharokha Palace Framing) */
+.royal-arch-frame {
+  border-radius: 120px 120px 24px 24px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 25px 60px -15px rgba(28, 8, 13, 0.7);
+  border: 3px solid rgba(212, 163, 89, 0.4);
+}
+
+@media (min-width: 640px) {
+  .royal-arch-frame {
+    border-radius: 160px 160px 32px 32px;
+  }
+}
+
+/* 🛏️ Arch-Top Room Cards */
+.arch-top-card {
+  border-radius: 40px 40px 24px 24px;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1.5px solid #ebd9c8;
+}
+
+.arch-top-card .card-img-holder {
+  border-radius: 36px 36px 16px 16px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ✨ Glowing Golden Hover Effect */
+.gold-glow-hover {
+  transition: all 0.35s ease;
+}
+
+.gold-glow-hover:hover {
+  transform: translateY(-8px);
+  border-color: #d4a359;
+  box-shadow: 0 20px 45px -8px rgba(212, 163, 89, 0.35);
+}
+
+/* Magazine Hero Floating Previews */
+.floating-hero-preview-1 {
+  animation: floatGentle 5s ease-in-out infinite;
+}
+
+.floating-hero-preview-2 {
+  animation: floatGentle 6s ease-in-out infinite 1.5s;
+}
+
+@keyframes floatGentle {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Floating Hero Price Badge */
+.hero-badge-pill {
+  background: #ffffff;
+  border-radius: 9999px;
+  box-shadow: 0 20px 45px -10px rgba(28, 8, 13, 0.35);
+  padding: 10px 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  border: 1.5px solid rgba(212, 163, 89, 0.4);
+  animation: floatGentle 5s ease-in-out infinite;
+}
+
+/* Glassmorphic Floating Price Tag */
+.glass-price-tag {
+  background: rgba(28, 8, 13, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #ffffff;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  border: 1px solid rgba(212, 163, 89, 0.5);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Convenience Service Card */
+.convenience-card {
+  background: #ffffff;
+  border-radius: 36px;
+  overflow: hidden;
+  border: 1.5px solid #ebd9c8;
+  box-shadow: 0 16px 40px -10px rgba(43, 14, 20, 0.07);
+  transition: all 0.35s ease;
+  position: relative;
+  padding: 24px 20px 20px 20px;
+}
+
+.convenience-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(212, 163, 89, 0.7);
+  box-shadow: 0 24px 50px -10px rgba(212, 163, 89, 0.25);
+}
+
+.convenience-arrow-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #f0c57c 0%, #d4a359 100%);
+  color: #1c080d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: bold;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 4px 12px rgba(212, 163, 89, 0.3);
+}
+
+.convenience-card:hover .convenience-arrow-btn {
+  transform: scale(1.12);
+  box-shadow: 0 6px 18px rgba(212, 163, 89, 0.55);
+}
+
+.convenience-icon-box {
+  position: absolute;
+  top: 76px;
+  left: 32px;
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  background-color: #2b0e14;
+  color: #f3cf8a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 19px;
+  z-index: 10;
+  border: 1.5px solid rgba(212, 163, 89, 0.5);
+  box-shadow: 0 6px 16px rgba(28, 8, 13, 0.3);
+}
+
+.convenience-img-wrapper {
+  position: relative;
+  height: 250px;
+  border-radius: 26px;
+  overflow: hidden;
+  margin-top: 14px;
+}
+
+.convenience-bottom-bubble {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 20px;
+  padding: 14px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Crossfade Effect on Sliders */
+.about-room-slide, .about-dining-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.08) translateY(4px);
+  transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1), transform 1.8s cubic-bezier(0.25, 1, 0.5, 1);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.about-room-slide.active, .about-dining-slide.active {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  pointer-events: auto;
+  z-index: 2;
+}
+
+/* Badges with Royal Trims */
+.badge-ac {
+  background: #fdf4eb;
+  color: #92400e;
+  font-weight: 700;
+  border-radius: 9999px;
+  padding: 4px 12px;
+  font-size: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border: 1px solid #fed7aa;
+}
+
+.badge-non-ac {
+  background: #f8fafc;
+  color: #475569;
+  font-weight: 700;
+  border-radius: 9999px;
+  padding: 4px 12px;
+  font-size: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border: 1px solid #cbd5e1;
+}
+
+.badge-suite {
+  background: linear-gradient(135deg, #2b0e14 0%, #3d141d 100%);
+  color: #f3cf8a;
+  font-weight: 800;
+  border-radius: 9999px;
+  padding: 4px 14px;
+  font-size: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid #d4a359;
+  box-shadow: 0 2px 10px rgba(212, 163, 89, 0.25);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #1c080d;
+}
+::-webkit-scrollbar-thumb {
+  background: #d4a359;
+  border-radius: 5px;
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 640px) {
+  .hero-badge-pill {
+    padding: 8px 18px;
+    gap: 14px;
+    width: 100%;
+    justify-content: space-around;
+  }
+  .hero-badge-pill .text-2xl {
+    font-size: 1.25rem;
+  }
+  .convenience-card {
+    border-radius: 28px;
+    padding: 20px 16px 16px 16px;
+  }
+  .convenience-img-wrapper {
+    height: 200px;
+  }
+}
+
+/* Mobile Floating Quick Action Bar */
+.mobile-bottom-bar {
+  box-shadow: 0 -8px 25px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Print Stylesheet for Invoices / Booking Vouchers */
+@media print {
+  header, footer, .no-print, .mobile-bottom-bar {
+    display: none !important;
+  }
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    padding: 0 !important;
+  }
+  #voucher-card {
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+  }
+}
