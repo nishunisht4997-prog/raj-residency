@@ -1,5 +1,6 @@
-﻿.gemini/
+.gemini/
 .system_generated/
 *.log
 Thumbs.db
 .DS_Store
+.env

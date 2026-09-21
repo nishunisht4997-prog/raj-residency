@@ -259,9 +259,177 @@ class SeedData {
         ];
     }
 
+    public static function getDefaultBanners() {
+        return [
+            // Hero Background Crossfade Slider
+            [
+                'id' => 1,
+                'section_name' => 'hero_slider',
+                'title' => 'Imperial Luxury Hotel Lounge',
+                'image_path' => 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1920&q=80',
+                'badge_text' => 'ROYAL HERITAGE & LUXURY',
+                'display_order' => 1,
+                'is_active' => 1
+            ],
+            [
+                'id' => 2,
+                'section_name' => 'hero_slider',
+                'title' => 'Executive Deluxe AC Suite',
+                'image_path' => 'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1920&q=80',
+                'badge_text' => 'PREMIUM AC LIVING',
+                'display_order' => 2,
+                'is_active' => 1
+            ],
+            [
+                'id' => 3,
+                'section_name' => 'hero_slider',
+                'title' => 'Raj Residency Palace Landmark',
+                'image_path' => 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1920&q=80',
+                'badge_text' => 'POST OFFICE ROAD KORAPUT',
+                'display_order' => 3,
+                'is_active' => 1
+            ],
+            [
+                'id' => 4,
+                'section_name' => 'hero_slider',
+                'title' => 'Royal Presidential Suite',
+                'image_path' => 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1920&q=80',
+                'badge_text' => 'MAJESTIC HOSPITALITY',
+                'display_order' => 4,
+                'is_active' => 1
+            ],
+            [
+                'id' => 5,
+                'section_name' => 'hero_slider',
+                'title' => 'Fine Dining & Banquet Hall',
+                'image_path' => 'https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=1920&q=80',
+                'badge_text' => 'AUTHENTIC ODIA CUISINE',
+                'display_order' => 5,
+                'is_active' => 1
+            ],
+
+            // Hero Archway Palace Frame & Previews
+            [
+                'id' => 6,
+                'section_name' => 'hero_archway',
+                'title' => 'Authentic Royal Comfort',
+                'image_path' => 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1000&q=80',
+                'badge_text' => 'POST OFFICE ROAD, KORAPUT',
+                'display_order' => 1,
+                'is_active' => 1
+            ],
+            [
+                'id' => 7,
+                'section_name' => 'hero_preview_1',
+                'title' => 'Executive AC Suites',
+                'image_path' => 'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=400&q=80',
+                'badge_text' => 'From ₹2,499/night',
+                'display_order' => 1,
+                'is_active' => 1
+            ],
+            [
+                'id' => 8,
+                'section_name' => 'hero_preview_2',
+                'title' => 'Deomali Tour Cabs',
+                'image_path' => 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80',
+                'badge_text' => '24/7 Travel Desk',
+                'display_order' => 1,
+                'is_active' => 1
+            ],
+
+            // About Us Room Slides
+            [
+                'id' => 9,
+                'section_name' => 'about_rooms',
+                'title' => 'Presidential Bedroom & Lounge',
+                'image_path' => 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80',
+                'badge_text' => 'Presidential Suite',
+                'display_order' => 1,
+                'is_active' => 1
+            ],
+            [
+                'id' => 10,
+                'section_name' => 'about_rooms',
+                'title' => 'Executive AC Deluxe Room',
+                'image_path' => 'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80',
+                'badge_text' => 'Executive Deluxe',
+                'display_order' => 2,
+                'is_active' => 1
+            ],
+            [
+                'id' => 11,
+                'section_name' => 'about_rooms',
+                'title' => 'Royal Super Deluxe Suite',
+                'image_path' => 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=800&q=80',
+                'badge_text' => 'Super Deluxe',
+                'display_order' => 3,
+                'is_active' => 1
+            ],
+            [
+                'id' => 12,
+                'section_name' => 'about_rooms',
+                'title' => 'Spotless Budget Non-AC Room',
+                'image_path' => 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=800&q=80',
+                'badge_text' => 'Clean Budget Non-AC',
+                'display_order' => 4,
+                'is_active' => 1
+            ],
+
+            // About Us Dining Slides
+            [
+                'id' => 13,
+                'section_name' => 'about_dining',
+                'title' => 'Multi-Cuisine Royal Dining',
+                'image_path' => 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80',
+                'badge_text' => 'Multi-Cuisine Hall',
+                'display_order' => 1,
+                'is_active' => 1
+            ],
+            [
+                'id' => 14,
+                'section_name' => 'about_dining',
+                'title' => 'Fresh Traditional Delicacies',
+                'image_path' => 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80',
+                'badge_text' => 'Fresh Local Spices',
+                'display_order' => 2,
+                'is_active' => 1
+            ],
+            [
+                'id' => 15,
+                'section_name' => 'about_dining',
+                'title' => 'Morning Buffet Breakfast',
+                'image_path' => 'https://images.unsplash.com/photo-1533777857889-4be7c70e33f7?auto=format&fit=crop&w=800&q=80',
+                'badge_text' => 'Morning Breakfast',
+                'display_order' => 3,
+                'is_active' => 1
+            ],
+            [
+                'id' => 16,
+                'section_name' => 'about_dining',
+                'title' => '24-Hour In-Room Dining Intercom',
+                'image_path' => 'https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=800&q=80',
+                'badge_text' => '24/7 Room Service',
+                'display_order' => 4,
+                'is_active' => 1
+            ],
+
+            // About Page Heritage Building
+            [
+                'id' => 17,
+                'section_name' => 'about_building',
+                'title' => 'Raj Residency Building Architecture',
+                'image_path' => 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=900&q=80',
+                'badge_text' => 'POST OFFICE ROAD, KORAPUT',
+                'display_order' => 1,
+                'is_active' => 1
+            ]
+        ];
+    }
+
     public static function getDefaultData() {
         return [
             'settings' => self::getDefaultSettings(),
+            'banners_and_images' => self::getDefaultBanners(),
             'rooms' => self::getDefaultRooms(),
             'reviews' => self::getDefaultReviews(),
             'bookings' => [
@@ -312,8 +480,22 @@ class SeedData {
             $stmt->execute([$key, $val, $val]);
         }
 
+        $banners = self::getDefaultBanners();
+        $bannerStmt = $pdo->prepare("INSERT INTO `banners_and_images` (`id`, `section_name`, `title`, `image_path`, `badge_text`, `display_order`, `is_active`) VALUES (?, ?, ?, ?, ?, ?, ?) ON DUPLICATE KEY UPDATE `title` = VALUES(`title`), `image_path` = VALUES(`image_path`)");
+        foreach ($banners as $b) {
+            $bannerStmt->execute([
+                $b['id'],
+                $b['section_name'],
+                $b['title'],
+                $b['image_path'],
+                $b['badge_text'],
+                $b['display_order'],
+                $b['is_active']
+            ]);
+        }
+
         $rooms = self::getDefaultRooms();
-        $roomStmt = $pdo->prepare("INSERT INTO `rooms` (`id`, `name`, `slug`, `category`, `type_label`, `price_per_night`, `discount_price`, `max_guests`, `bed_type`, `room_size`, `featured_image`, `gallery`, `description`, `amenities`, `inclusions`, `is_featured`, `is_available`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $roomStmt = $pdo->prepare("INSERT INTO `rooms` (`id`, `name`, `slug`, `category`, `type_label`, `price_per_night`, `discount_price`, `max_guests`, `bed_type`, `room_size`, `featured_image`, `gallery`, `description`, `amenities`, `inclusions`, `is_featured`, `is_available`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ON DUPLICATE KEY UPDATE `name` = VALUES(`name`), `price_per_night` = VALUES(`price_per_night`)");
         foreach ($rooms as $r) {
             $roomStmt->execute([
                 $r['id'],
@@ -337,7 +519,7 @@ class SeedData {
         }
 
         $reviews = self::getDefaultReviews();
-        $revStmt = $pdo->prepare("INSERT INTO `reviews` (`id`, `guest_name`, `guest_city`, `room_stayed`, `rating`, `title`, `review_text`, `is_approved`, `is_featured`, `created_at`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $revStmt = $pdo->prepare("INSERT INTO `reviews` (`id`, `guest_name`, `guest_city`, `room_stayed`, `rating`, `title`, `review_text`, `is_approved`, `is_featured`, `created_at`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ON DUPLICATE KEY UPDATE `title` = VALUES(`title`)");
         foreach ($reviews as $rv) {
             $revStmt->execute([
                 $rv['id'],
@@ -354,7 +536,7 @@ class SeedData {
         }
 
         $admins = self::getDefaultAdmins();
-        $admStmt = $pdo->prepare("INSERT INTO `admins` (`id`, `username`, `password_hash`, `full_name`, `email`) VALUES (?, ?, ?, ?, ?)");
+        $admStmt = $pdo->prepare("INSERT INTO `admins` (`id`, `username`, `password_hash`, `full_name`, `email`) VALUES (?, ?, ?, ?, ?) ON DUPLICATE KEY UPDATE `full_name` = VALUES(`full_name`)");
         foreach ($admins as $a) {
             $admStmt->execute([
                 $a['id'],
@@ -366,3 +548,4 @@ class SeedData {
         }
     }
 }
+

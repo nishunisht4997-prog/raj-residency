@@ -33,27 +33,45 @@ A complete, luxury, and responsive hotel web application built in **PHP**, **Tai
    - `reviews.php`: Interactive 5-star rating submission form, guest feedback showcase, and overall satisfaction score breakdown.
    - `contact.php`: Interactive inquiry form, Koraput address, direct dial buttons, WhatsApp chat link, and embedded Google Maps.
 
-3. **Zero-Config Dual Database Architecture**:
-   - **Out-of-the-Box Mode**: Automatic JSON storage fallback in `data/store.json` so the website works immediately with standard PHP without requiring MySQL setup.
-   - **Production MySQL Mode**: Auto-connects to MySQL if available, or import `database.sql` via phpMyAdmin.
+3. **100% Pure MySQL Database Architecture**:
+   - Strictly powered by MySQL with prepared PDO queries and SQL transactions.
+   - Auto-table initialization & seeding if database is fresh.
+   - Built-in `setup_db.php` for 1-click diagnostics and table count verification.
+   - Full MySQL dump available in `database.sql` for easy 1-click phpMyAdmin import.
+
+4. **Complete Admin Suite (`/admin`)**:
+   - Real-time Analytics Dashboard (`admin/index.php`)
+   - Reservation Manager with Status Updates & Check-In tracking (`admin/bookings.php`)
+   - Room Catalog & Pricing Manager (`admin/rooms.php`)
+   - Hero Slider & Banner Media Manager (`admin/media.php`)
+   - Contact Messages & Inquiries Inbox (`admin/messages.php`)
+   - Guest Reviews Moderation (`admin/reviews.php`)
+   - Hotel Profile, Contact & Timings Settings (`admin/settings.php`)
 
 ---
 
-## 🚀 How to Run Locally
+## 🔐 Admin Panel Credentials
+- **URL**: `http://your-domain.com/admin/login.php`
+- **Username**: `admin`
+- **Password**: `admin123`
 
-### Option 1: PHP Built-in Server (Zero Setup)
-1. Open PowerShell / Command Prompt in this folder:
-   ```bash
-   cd c:\Users\HP\OneDrive\Desktop\raj-residency
-   ```
-2. Start the local server:
-   ```bash
-   php -S localhost:8000
-   ```
-3. Open your browser:
-   - **Main Website**: [http://localhost:8000](http://localhost:8000)
+---
 
-### Option 2: XAMPP / WAMP / cPanel
-1. Copy the `raj-residency` folder into `C:\xampp\htdocs\`
-2. Start Apache in XAMPP Control Panel.
-3. Open `http://localhost/raj-residency` in your browser.
+## 🌐 How to Deploy Live (cPanel / Hostinger / GoDaddy / VPS)
+
+1. **Upload Files**:
+   - Upload all files from this folder into your hosting `public_html` directory via cPanel File Manager or FTP.
+
+2. **Database Setup**:
+   - In cPanel, go to **MySQL Databases** and create a new database (e.g. `raj_residency`) and user.
+   - Go to **phpMyAdmin**, select the newly created database, click **Import**, and choose `database.sql` from the project.
+   - Open `config/database.php` and enter your database credentials:
+     - `self::$db_name = 'your_database_name';`
+     - `self::$username = 'your_database_user';`
+     - `self::$password = 'your_database_password';`
+     *(Or set environment variables `DB_HOST`, `DB_NAME`, `DB_USER`, `DB_PASS` in your host's environment settings).*
+
+3. **Verify Deployment**:
+   - Visit `http://your-domain.com/setup_db.php` to verify all 6 rooms, banners, settings, and tables are running smoothly.
+   - Log in at `http://your-domain.com/admin/login.php` using `admin` / `admin123` and update your password from the top-right profile modal!
+   - Website is 100% live and ready for bookings!

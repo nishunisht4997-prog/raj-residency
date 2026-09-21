@@ -15,13 +15,18 @@ if (empty($featuredRooms)) {
 <!-- 1. MAGAZINE-STYLE ASYMMETRIC ROYAL HERO SECTION -->
 <section class="relative bg-[#2b0e14] text-white pt-10 pb-24 lg:pt-14 lg:pb-32 overflow-hidden border-b border-[#d4a359]/30">
     
+    <?php
+    $heroSlides = get_section_images('hero_slider', true);
+    if (empty($heroSlides)) {
+        $defaultBanners = SeedData::getDefaultBanners();
+        $heroSlides = array_filter($defaultBanners, function($b) { return ($b['section_name'] ?? '') === 'hero_slider'; });
+    }
+    ?>
     <!-- Hero Background Crossfade Slider -->
     <div class="hero-bg-slider absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1920&q=80');"></div>
-        <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1920&q=80');"></div>
-        <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1920&q=80');"></div>
-        <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1920&q=80');"></div>
-        <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=1920&q=80');"></div>
+        <?php foreach (array_values($heroSlides) as $idx => $slide): ?>
+            <div class="hero-slide <?php echo $idx === 0 ? 'active' : ''; ?>" style="background-image: url('<?php echo htmlspecialchars($slide['image_path']); ?>');"></div>
+        <?php endforeach; ?>
         
         <!-- Royal Wine & Dark Maroon Gradient Overlay -->
         <div class="absolute inset-0 bg-gradient-to-r from-[#1c080d]/95 via-[#2b0e14]/90 to-[#1c080d]/80 backdrop-blur-[0.5px]"></div>
@@ -92,37 +97,58 @@ if (empty($featuredRooms)) {
 
             <!-- Right: Magazine-Style Asymmetrical Archway with Floating Previews -->
             <div class="lg:col-span-6 relative mt-6 lg:mt-0 flex items-center justify-center">
-                
+                <?php
+                $heroArchwayList = get_section_images('hero_archway', true);
+                $heroArchway = !empty($heroArchwayList) ? $heroArchwayList[0] : [
+                    'title' => 'Authentic Royal Comfort',
+                    'image_path' => 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1000&q=80',
+                    'badge_text' => 'POST OFFICE ROAD, KORAPUT'
+                ];
+
+                $heroPreview1List = get_section_images('hero_preview_1', true);
+                $heroPreview1 = !empty($heroPreview1List) ? $heroPreview1List[0] : [
+                    'title' => 'Executive AC Suites',
+                    'image_path' => 'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=200&q=80',
+                    'badge_text' => 'From ₹2,499/night'
+                ];
+
+                $heroPreview2List = get_section_images('hero_preview_2', true);
+                $heroPreview2 = !empty($heroPreview2List) ? $heroPreview2List[0] : [
+                    'title' => 'Deomali Tour Cabs',
+                    'image_path' => 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=200&q=80',
+                    'badge_text' => '24/7 Travel Desk'
+                ];
+                ?>
                 <!-- Main Archway Frame (Jharokha Style) -->
                 <div class="royal-arch-frame w-full max-w-[420px] h-[380px] sm:h-[460px] bg-slate-900 relative">
-                    <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1000&q=80" 
-                         alt="<?php echo htmlspecialchars($settings['hotel_name']); ?> Luxury Suite Lounge" 
+                    <img src="<?php echo htmlspecialchars($heroArchway['image_path']); ?>" 
+                         alt="<?php echo htmlspecialchars($heroArchway['title'] ?? $settings['hotel_name']); ?>" 
                          class="w-full h-full object-cover">
                     
                     <!-- Center Overlay Crest on Archway -->
                     <div class="absolute inset-0 bg-gradient-to-t from-[#1c080d]/80 via-transparent to-transparent flex items-end p-6">
                         <div class="text-white">
-                            <span class="text-[10px] font-bold text-[#f3cf8a] uppercase tracking-widest block">POST OFFICE ROAD, KORAPUT</span>
-                            <span class="font-serif text-lg font-bold text-white">Authentic Royal Comfort</span>
+                            <span class="text-[10px] font-bold text-[#f3cf8a] uppercase tracking-widest block"><?php echo htmlspecialchars($heroArchway['badge_text'] ?? 'POST OFFICE ROAD, KORAPUT'); ?></span>
+                            <span class="font-serif text-lg font-bold text-white"><?php echo htmlspecialchars($heroArchway['title'] ?? 'Authentic Royal Comfort'); ?></span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Floating Mini Preview 1 (Top Left) -->
                 <div class="floating-hero-preview-1 absolute -top-4 -left-3 sm:-left-6 bg-white/95 backdrop-blur-md rounded-2xl p-2.5 sm:p-3 border border-[#d4a359]/50 shadow-2xl flex items-center space-x-3 max-w-[200px] sm:max-w-[220px]">
-                    <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=200&q=80" alt="AC Suite" class="w-11 h-11 rounded-xl object-cover border border-[#d4a359]/40">
+                    <img src="<?php echo htmlspecialchars($heroPreview1['image_path']); ?>" alt="<?php echo htmlspecialchars($heroPreview1['title']); ?>" class="w-11 h-11 rounded-xl object-cover border border-[#d4a359]/40">
                     <div>
-                        <strong class="text-xs text-[#2b0e14] block leading-tight">Executive AC Suites</strong>
-                        <span class="text-[10px] text-[#b88738] font-bold">From ₹2,499/night</span>
+                        <strong class="text-xs text-[#2b0e14] block leading-tight"><?php echo htmlspecialchars($heroPreview1['title']); ?></strong>
+                        <span class="text-[10px] text-[#b88738] font-bold"><?php echo htmlspecialchars($heroPreview1['badge_text']); ?></span>
                     </div>
                 </div>
 
                 <!-- Floating Mini Preview 2 (Bottom Right) -->
                 <div class="floating-hero-preview-2 absolute -bottom-4 -right-3 sm:-right-6 bg-white/95 backdrop-blur-md rounded-2xl p-2.5 sm:p-3 border border-[#d4a359]/50 shadow-2xl flex items-center space-x-3 max-w-[200px] sm:max-w-[230px]">
-                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=200&q=80" alt="Deomali Gateway" class="w-11 h-11 rounded-xl object-cover border border-[#d4a359]/40">
+                    <img src="<?php echo htmlspecialchars($heroPreview2['image_path']); ?>" alt="<?php echo htmlspecialchars($heroPreview2['title']); ?>" class="w-11 h-11 rounded-xl object-cover border border-[#d4a359]/40">
                     <div>
-                        <strong class="text-xs text-[#2b0e14] block leading-tight">Deomali Tour Cabs</strong>
-                        <span class="text-[10px] text-emerald-700 font-bold">24/7 Travel Desk</span>
+                        <strong class="text-xs text-[#2b0e14] block leading-tight"><?php echo htmlspecialchars($heroPreview2['title']); ?></strong>
+                        <span class="text-[10px] text-emerald-700 font-bold"><?php echo htmlspecialchars($heroPreview2['badge_text']); ?></span>
                     </div>
                 </div>
 
@@ -178,9 +204,9 @@ if (empty($featuredRooms)) {
             </div>
 
             <div>
-                <button type="submit" class="w-full btn-gold font-bold text-xs py-3 px-4 rounded-xl shadow-md uppercase tracking-wider flex items-center justify-center space-x-2">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <span>Check Rooms</span>
+                <button type="submit" class="w-full btn-gold py-2.5 rounded-xl text-xs font-bold tracking-wider uppercase shadow-md flex items-center justify-center space-x-1.5">
+                    <i class="fa-solid fa-magnifying-glass text-[11px]"></i>
+                    <span>SEARCH</span>
                 </button>
             </div>
 
@@ -196,12 +222,18 @@ if (empty($featuredRooms)) {
             <!-- Left Side: Archway Layered Luxury Photo Frame -->
             <div class="lg:col-span-6 relative">
                 <div class="relative max-w-md mx-auto">
-                    <!-- Main Archway Frame with 4-image auto slider -->
+                    <?php
+                    $aboutRoomSlides = get_section_images('about_rooms', true);
+                    if (empty($aboutRoomSlides)) {
+                        $defaultBanners = SeedData::getDefaultBanners();
+                        $aboutRoomSlides = array_filter($defaultBanners, function($b) { return ($b['section_name'] ?? '') === 'about_rooms'; });
+                    }
+                    ?>
+                    <!-- Main Archway Frame with auto slider -->
                     <div class="royal-arch-frame w-full h-96 sm:h-[440px] bg-slate-900 relative border-4 border-white shadow-2xl">
-                        <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=900&q=80" alt="Raj Residency Room 1" class="about-room-slide active">
-                        <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=900&q=80" alt="Raj Residency Room 2" class="about-room-slide">
-                        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=80" alt="Raj Residency Room 3" class="about-room-slide">
-                        <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=900&q=80" alt="Raj Residency Room 4" class="about-room-slide">
+                        <?php foreach (array_values($aboutRoomSlides) as $aIdx => $aSlide): ?>
+                            <img src="<?php echo htmlspecialchars($aSlide['image_path']); ?>" alt="<?php echo htmlspecialchars($aSlide['title']); ?>" class="about-room-slide <?php echo $aIdx === 0 ? 'active' : ''; ?>">
+                        <?php endforeach; ?>
                     </div>
 
                     <!-- Floating Pill on top of image -->

@@ -1,16 +1,26 @@
-﻿FROM php:8.2-apache
+FROM php:8.2-apache
+
+# Install PDO MySQL extension
+RUN docker-php-ext-install pdo pdo_mysql
 
 # Enable Apache mod_rewrite
 RUN a2enmod rewrite
 
-# Copy project files to Apache root
+# Copy entrypoint script and application files
+COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+
 COPY . /var/www/html/
 
-# Set permissions so PHP can save bookings/reviews
+# Set correct ownership & permissions for uploads
+WORKDIR /var/www/html
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html \
-    && chmod -R 777 /var/www/html/data
+    && mkdir -p /var/www/html/uploads \
+    && chmod -R 777 /var/www/html/uploads
 
-EXPOSE 80
+# Default port for Render is 10000
+ENV PORT=10000
+EXPOSE 10000
 
-CMD ["apache2-foreground"]
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]

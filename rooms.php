@@ -26,28 +26,28 @@ $rooms = get_all_rooms($selectedCategory, true);
 
 <!-- Filter Navigation Bar -->
 <section class="bg-[#fbf9f5] border-b border-[#d4a359]/20 sticky top-20 sm:top-24 z-40 shadow-sm backdrop-blur-md bg-opacity-95">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-        <div class="flex flex-wrap items-center justify-between gap-4">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5">
+        <div class="flex items-center justify-between gap-3 overflow-x-auto pb-1 sm:pb-0 scrollbar-thin">
             
-            <div class="flex flex-wrap items-center gap-2">
-                <a href="rooms.php" class="px-5 py-2 rounded-full text-xs font-bold transition <?php echo ($selectedCategory === 'all') ? 'bg-[#2b0e14] text-[#f3cf8a] shadow-md ring-1 ring-[#d4a359]/40' : 'bg-white text-slate-700 hover:bg-[#f5efe6] border border-slate-200'; ?>">
+            <div class="flex items-center gap-2 shrink-0">
+                <a href="rooms.php" class="px-4 sm:px-5 py-2 rounded-full text-xs font-bold transition whitespace-nowrap <?php echo ($selectedCategory === 'all') ? 'bg-[#2b0e14] text-[#f3cf8a] shadow-md ring-1 ring-[#d4a359]/40' : 'bg-white text-slate-700 hover:bg-[#f5efe6] border border-slate-200'; ?>">
                     All Rooms
                 </a>
-                <a href="rooms.php?category=ac" class="px-5 py-2 rounded-full text-xs font-bold transition <?php echo ($selectedCategory === 'ac') ? 'bg-[#2b0e14] text-[#f3cf8a] shadow-md ring-1 ring-[#d4a359]/40' : 'bg-white text-slate-700 hover:bg-[#f5efe6] border border-slate-200'; ?>">
+                <a href="rooms.php?category=ac" class="px-4 sm:px-5 py-2 rounded-full text-xs font-bold transition whitespace-nowrap <?php echo ($selectedCategory === 'ac') ? 'bg-[#2b0e14] text-[#f3cf8a] shadow-md ring-1 ring-[#d4a359]/40' : 'bg-white text-slate-700 hover:bg-[#f5efe6] border border-slate-200'; ?>">
                     <i class="fa-solid fa-snowflake text-[10px] mr-1 text-[#d4a359]"></i> AC Deluxe
                 </a>
-                <a href="rooms.php?category=non_ac" class="px-5 py-2 rounded-full text-xs font-bold transition <?php echo ($selectedCategory === 'non_ac') ? 'bg-[#2b0e14] text-[#f3cf8a] shadow-md ring-1 ring-[#d4a359]/40' : 'bg-white text-slate-700 hover:bg-[#f5efe6] border border-slate-200'; ?>">
+                <a href="rooms.php?category=non_ac" class="px-4 sm:px-5 py-2 rounded-full text-xs font-bold transition whitespace-nowrap <?php echo ($selectedCategory === 'non_ac') ? 'bg-[#2b0e14] text-[#f3cf8a] shadow-md ring-1 ring-[#d4a359]/40' : 'bg-white text-slate-700 hover:bg-[#f5efe6] border border-slate-200'; ?>">
                     <i class="fa-solid fa-wind text-[10px] mr-1 text-slate-500"></i> Budget Non-AC
                 </a>
-                <a href="rooms.php?category=suite" class="px-5 py-2 rounded-full text-xs font-bold transition <?php echo ($selectedCategory === 'suite') ? 'bg-[#2b0e14] text-[#f3cf8a] shadow-md ring-1 ring-[#d4a359]/40' : 'bg-white text-slate-700 hover:bg-[#f5efe6] border border-slate-200'; ?>">
+                <a href="rooms.php?category=suite" class="px-4 sm:px-5 py-2 rounded-full text-xs font-bold transition whitespace-nowrap <?php echo ($selectedCategory === 'suite') ? 'bg-[#2b0e14] text-[#f3cf8a] shadow-md ring-1 ring-[#d4a359]/40' : 'bg-white text-slate-700 hover:bg-[#f5efe6] border border-slate-200'; ?>">
                     <i class="fa-solid fa-crown text-[10px] mr-1 text-[#d4a359]"></i> Royal Suites
                 </a>
             </div>
 
             <?php if ($selectedCategory !== 'all'): ?>
-                <a href="rooms.php" class="text-xs text-rose-600 hover:underline font-semibold flex items-center space-x-1">
+                <a href="rooms.php" class="text-xs text-rose-600 hover:underline font-semibold flex items-center space-x-1 shrink-0 whitespace-nowrap">
                     <i class="fa-solid fa-rotate-left"></i>
-                    <span>Reset Filters</span>
+                    <span>Reset</span>
                 </a>
             <?php endif; ?>
 

@@ -1,2 +1,8 @@
-﻿.git
+.git
 .gitignore
+.gemini/
+.system_generated/
+*.log
+*.tmp
+database.sql
+README.md

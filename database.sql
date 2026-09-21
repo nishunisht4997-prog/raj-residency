@@ -27,7 +27,39 @@ INSERT INTO `settings` (`key_name`, `value_text`) VALUES
 ('tax_percentage', '12'),
 ('map_embed_url', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d60462.43577317769!2d82.6800726486328!3d18.81352490000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a3a41b52bb6b825%3A0x6b772c366e792e35!2sKoraput%2C%20Odisha%20764020!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin');
 
--- 2. Table structure for `rooms`
+-- 2. Table structure for `banners_and_images` (Dynamic Hero Slides, Archway, About Us photos)
+DROP TABLE IF EXISTS `banners_and_images`;
+CREATE TABLE `banners_and_images` (
+  `id` INT AUTO_INCREMENT PRIMARY KEY,
+  `section_name` VARCHAR(100) NOT NULL,
+  `title` VARCHAR(255) NOT NULL,
+  `image_path` TEXT NOT NULL,
+  `badge_text` VARCHAR(255) NULL,
+  `display_order` INT DEFAULT 1,
+  `is_active` TINYINT(1) DEFAULT 1,
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `banners_and_images` (`id`, `section_name`, `title`, `image_path`, `badge_text`, `display_order`, `is_active`) VALUES
+(1, 'hero_slider', 'Imperial Luxury Hotel Lounge', 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1920&q=80', 'ROYAL HERITAGE & LUXURY', 1, 1),
+(2, 'hero_slider', 'Executive Deluxe AC Suite', 'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1920&q=80', 'PREMIUM AC LIVING', 2, 1),
+(3, 'hero_slider', 'Raj Residency Palace Landmark', 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1920&q=80', 'POST OFFICE ROAD KORAPUT', 3, 1),
+(4, 'hero_slider', 'Royal Presidential Suite', 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1920&q=80', 'MAJESTIC HOSPITALITY', 4, 1),
+(5, 'hero_slider', 'Fine Dining & Banquet Hall', 'https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=1920&q=80', 'AUTHENTIC ODIA CUISINE', 5, 1),
+(6, 'hero_archway', 'Authentic Royal Comfort', 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1000&q=80', 'POST OFFICE ROAD, KORAPUT', 1, 1),
+(7, 'hero_preview_1', 'Executive AC Suites', 'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=400&q=80', 'From ₹2,499/night', 1, 1),
+(8, 'hero_preview_2', 'Deomali Tour Cabs', 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80', '24/7 Travel Desk', 1, 1),
+(9, 'about_rooms', 'Presidential Bedroom & Lounge', 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80', 'Presidential Suite', 1, 1),
+(10, 'about_rooms', 'Executive AC Deluxe Room', 'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80', 'Executive Deluxe', 2, 1),
+(11, 'about_rooms', 'Royal Super Deluxe Suite', 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=800&q=80', 'Super Deluxe', 3, 1),
+(12, 'about_rooms', 'Spotless Budget Non-AC Room', 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=800&q=80', 'Clean Budget Non-AC', 4, 1),
+(13, 'about_dining', 'Multi-Cuisine Royal Dining', 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80', 'Multi-Cuisine Hall', 1, 1),
+(14, 'about_dining', 'Fresh Traditional Delicacies', 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80', 'Fresh Local Spices', 2, 1),
+(15, 'about_dining', 'Morning Buffet Breakfast', 'https://images.unsplash.com/photo-1533777857889-4be7c70e33f7?auto=format&fit=crop&w=800&q=80', 'Morning Breakfast', 3, 1),
+(16, 'about_dining', '24-Hour In-Room Dining Intercom', 'https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=800&q=80', '24/7 Room Service', 4, 1),
+(17, 'about_building', 'Raj Residency Building Architecture', 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=900&q=80', 'POST OFFICE ROAD, KORAPUT', 1, 1);
+
+-- 3. Table structure for `rooms`
 DROP TABLE IF EXISTS `rooms`;
 CREATE TABLE `rooms` (
   `id` INT AUTO_INCREMENT PRIMARY KEY,
