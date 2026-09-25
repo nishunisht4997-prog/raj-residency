@@ -495,7 +495,7 @@ class SeedData {
         }
 
         $rooms = self::getDefaultRooms();
-        $roomStmt = $pdo->prepare("INSERT INTO `rooms` (`id`, `name`, `slug`, `category`, `type_label`, `price_per_night`, `discount_price`, `max_guests`, `bed_type`, `room_size`, `featured_image`, `gallery`, `description`, `amenities`, `inclusions`, `is_featured`, `is_available`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ON DUPLICATE KEY UPDATE `name` = VALUES(`name`), `price_per_night` = VALUES(`price_per_night`)");
+        $roomStmt = $pdo->prepare("INSERT INTO `rooms` (`id`, `name`, `slug`, `category`, `type_label`, `price_per_night`, `discount_price`, `max_guests`, `bed_type`, `room_size`, `featured_image`, `gallery`, `description`, `amenities`, `inclusions`, `is_featured`, `is_available`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ON DUPLICATE KEY UPDATE `name` = VALUES(`name`), `price_per_night` = VALUES(`price_per_night`), `featured_image` = VALUES(`featured_image`), `gallery` = VALUES(`gallery`)");
         foreach ($rooms as $r) {
             $roomStmt->execute([
                 $r['id'],

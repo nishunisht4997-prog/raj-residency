@@ -100,7 +100,7 @@ $buildingPhoto = !empty($buildingList) ? $buildingList[0]['image_path'] : 'https
             <!-- Right Side: Building Archway Photo -->
             <div class="lg:col-span-6">
                 <div class="royal-arch-frame relative group overflow-hidden rounded-t-[60px] rounded-b-3xl border-4 border-white shadow-2xl bg-slate-900 h-[480px]">
-                    <img src="<?php echo htmlspecialchars($buildingPhoto); ?>" alt="<?php echo htmlspecialchars($settings['hotel_name']); ?> Building Landmark" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                    <img src="<?php echo htmlspecialchars($buildingPhoto); ?>" alt="<?php echo htmlspecialchars($settings['hotel_name']); ?> Building Landmark" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=900&q=80';" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
                     <div class="absolute inset-0 bg-gradient-to-t from-[#1c080d]/85 via-transparent to-transparent"></div>
                     
                     <div class="absolute bottom-6 left-6 right-6 p-5 rounded-2xl bg-[#2b0e14]/90 backdrop-blur-md border border-[#d4a359]/40 text-white shadow-xl">
@@ -208,7 +208,7 @@ $buildingPhoto = !empty($buildingList) ? $buildingList[0]['image_path'] : 'https
                 <div class="royal-arch-frame relative rounded-t-[50px] rounded-b-3xl border-4 border-white shadow-2xl bg-slate-900 h-[380px] sm:h-[460px] overflow-hidden">
                     <?php foreach ($roomSlides as $rIdx => $rSlide): ?>
                         <div class="room-slide absolute inset-0 transition-opacity duration-700 ease-in-out <?php echo $rIdx === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0'; ?>">
-                            <img src="<?php echo htmlspecialchars($rSlide['image_path']); ?>" alt="<?php echo htmlspecialchars($rSlide['title']); ?>" class="w-full h-full object-cover">
+                            <img src="<?php echo htmlspecialchars($rSlide['image_path']); ?>" alt="<?php echo htmlspecialchars($rSlide['title']); ?>" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80';" class="w-full h-full object-cover">
                             <div class="absolute inset-0 bg-gradient-to-t from-[#1c080d]/80 via-transparent to-transparent"></div>
                             
                             <div class="absolute bottom-6 left-6 right-6 flex items-center justify-between">
@@ -262,7 +262,7 @@ $buildingPhoto = !empty($buildingList) ? $buildingList[0]['image_path'] : 'https
                 <div class="royal-arch-frame relative rounded-t-[50px] rounded-b-3xl border-4 border-white shadow-2xl bg-slate-900 h-[380px] sm:h-[460px] overflow-hidden">
                     <?php foreach ($diningSlides as $dIdx => $dSlide): ?>
                         <div class="about-dining-slide absolute inset-0 transition-opacity duration-700 ease-in-out <?php echo $dIdx === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0'; ?>">
-                            <img src="<?php echo htmlspecialchars($dSlide['image_path']); ?>" alt="<?php echo htmlspecialchars($dSlide['title']); ?>" class="w-full h-full object-cover">
+                            <img src="<?php echo htmlspecialchars($dSlide['image_path']); ?>" alt="<?php echo htmlspecialchars($dSlide['title']); ?>" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80';" class="w-full h-full object-cover">
                             <div class="absolute inset-0 bg-gradient-to-t from-[#1c080d]/80 via-transparent to-transparent"></div>
                             
                             <div class="absolute bottom-6 left-6 right-6 flex items-center justify-between">

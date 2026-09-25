@@ -487,7 +487,7 @@ require_once __DIR__ . '/includes/header.php';
                         <!-- Selected Room Visual -->
                         <div class="space-y-3">
                             <div class="h-36 rounded-2xl overflow-hidden shadow-sm relative bg-slate-900 border border-[#ebd9c8]">
-                                <img id="summary-room-img" src="<?php echo htmlspecialchars($room['featured_image']); ?>" alt="<?php echo htmlspecialchars($room['name']); ?>" class="w-full h-full object-cover">
+                                <img id="summary-room-img" src="<?php echo htmlspecialchars($room['featured_image']); ?>" alt="<?php echo htmlspecialchars($room['name']); ?>" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1000&q=80';" class="w-full h-full object-cover">
                                 <span id="summary-category-badge" class="absolute top-2 left-2 px-2.5 py-0.5 rounded-full text-[9px] font-bold bg-[#2b0e14]/90 text-[#f3cf8a] border border-[#d4a359]/40">
                                     <?php echo htmlspecialchars($room['type_label']); ?>
                                 </span>

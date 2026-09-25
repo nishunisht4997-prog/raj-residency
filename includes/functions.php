@@ -169,6 +169,85 @@ function update_settings($newSettings) {
 }
 
 // -------------------------------------------------------------
+// Bulletproof Cloud Image Resolution & Fallback Helpers
+// -------------------------------------------------------------
+
+function resolve_media_url($imagePath, $fallbackKey = null, $type = 'banner') {
+    if (empty($imagePath)) {
+        return get_default_media_fallback($fallbackKey, $type);
+    }
+    
+    // If already an absolute web URL (http:// or https://), return it directly
+    if (strpos($imagePath, 'http://') === 0 || strpos($imagePath, 'https://') === 0) {
+        return $imagePath;
+    }
+    
+    // If it's a relative uploads path, verify if file exists on this server disk
+    $cleanPath = ltrim($imagePath, '/');
+    $fullDiskPath = __DIR__ . '/../' . $cleanPath;
+    
+    if (file_exists($fullDiskPath) && !is_dir($fullDiskPath)) {
+        return $imagePath;
+    }
+    
+    // File missing on disk (e.g. Render container wiped /uploads) -> return fallback image!
+    return get_default_media_fallback($fallbackKey, $type);
+}
+
+function get_default_media_fallback($key = null, $type = 'banner') {
+    static $defaultRoomsMap = null;
+    static $defaultBannersMap = null;
+    
+    if ($defaultRoomsMap === null) {
+        $defaultRoomsMap = [
+            1 => 'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1000&q=80',
+            2 => 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=1000&q=80',
+            3 => 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1000&q=80',
+            4 => 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1000&q=80',
+            5 => 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1000&q=80'
+        ];
+        $defaultBannersMap = [
+            'hero_slider_1' => 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1920&q=80',
+            'hero_slider_2' => 'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1920&q=80',
+            'hero_slider_3' => 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1920&q=80',
+            'hero_slider_4' => 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1920&q=80',
+            'hero_slider_5' => 'https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=1920&q=80',
+            'hero_archway'   => 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1000&q=80',
+            'hero_preview_1' => 'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=400&q=80',
+            'hero_preview_2' => 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80',
+            'about_rooms_1'  => 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80',
+            'about_rooms_2'  => 'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80',
+            'about_rooms_3'  => 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=800&q=80',
+            'about_rooms_4'  => 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=800&q=80',
+            'about_dining_1' => 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80',
+            'about_dining_2' => 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80',
+            'about_dining_3' => 'https://images.unsplash.com/photo-1533777857889-4be7c70e33f7?auto=format&fit=crop&w=800&q=80',
+            'about_dining_4' => 'https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=800&q=80',
+            'about_building' => 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=900&q=80'
+        ];
+    }
+    
+    if ($type === 'room') {
+        return $defaultRoomsMap[$key] ?? $defaultRoomsMap[1];
+    }
+    
+    if ($type === 'hero_preview_1') return $defaultBannersMap['hero_preview_1'];
+    if ($type === 'hero_preview_2') return $defaultBannersMap['hero_preview_2'];
+    if ($type === 'hero_archway') return $defaultBannersMap['hero_archway'];
+    
+    if (isset($defaultBannersMap[$type])) {
+        return $defaultBannersMap[$type];
+    }
+    
+    $combinedKey = $type . '_' . $key;
+    if (isset($defaultBannersMap[$combinedKey])) {
+        return $defaultBannersMap[$combinedKey];
+    }
+    
+    return 'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1000&q=80';
+}
+
+// -------------------------------------------------------------
 // Pure MySQL Banners & Dynamic Section Images CRUD (Hero, Archway, About)
 // -------------------------------------------------------------
 
@@ -187,6 +266,11 @@ function get_section_images($sectionName = null, $onlyActive = true) {
     $stmt = $pdo->prepare($sql);
     $stmt->execute($params);
     $results = $stmt->fetchAll();
+    if ($results) {
+        foreach ($results as &$b) {
+            $b['image_path'] = resolve_media_url($b['image_path'], $b['display_order'] ?? $b['id'], $b['section_name']);
+        }
+    }
     return $results ?: [];
 }
 
@@ -198,7 +282,11 @@ function get_section_image_by_id($id) {
     $pdo = Database::getPDO();
     $stmt = $pdo->prepare("SELECT * FROM `banners_and_images` WHERE `id` = ? LIMIT 1");
     $stmt->execute([$id]);
-    return $stmt->fetch();
+    $img = $stmt->fetch();
+    if ($img) {
+        $img['image_path'] = resolve_media_url($img['image_path'], $img['display_order'] ?? $img['id'], $img['section_name']);
+    }
+    return $img;
 }
 
 function save_section_image($imageData, $id = null) {
@@ -266,6 +354,12 @@ function get_all_rooms($category = null, $onlyAvailable = false) {
         $r['amenities'] = is_string($r['amenities']) ? json_decode($r['amenities'], true) : $r['amenities'];
         $r['gallery'] = is_string($r['gallery']) ? json_decode($r['gallery'], true) : $r['gallery'];
         $r['inclusions'] = is_string($r['inclusions']) ? json_decode($r['inclusions'], true) : $r['inclusions'];
+        $r['featured_image'] = resolve_media_url($r['featured_image'], $r['id'], 'room');
+        if (is_array($r['gallery'])) {
+            $r['gallery'] = array_map(function($g) use ($r) {
+                return resolve_media_url($g, $r['id'], 'room');
+            }, $r['gallery']);
+        }
     }
     return $rooms;
 }
@@ -279,6 +373,12 @@ function get_room_by_id($id) {
         $room['amenities'] = is_string($room['amenities']) ? json_decode($room['amenities'], true) : $room['amenities'];
         $room['gallery'] = is_string($room['gallery']) ? json_decode($room['gallery'], true) : $room['gallery'];
         $room['inclusions'] = is_string($room['inclusions']) ? json_decode($room['inclusions'], true) : $room['inclusions'];
+        $room['featured_image'] = resolve_media_url($room['featured_image'], $room['id'], 'room');
+        if (is_array($room['gallery'])) {
+            $room['gallery'] = array_map(function($g) use ($room) {
+                return resolve_media_url($g, $room['id'], 'room');
+            }, $room['gallery']);
+        }
     }
     return $room;
 }

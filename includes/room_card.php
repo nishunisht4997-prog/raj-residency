@@ -23,6 +23,7 @@ if ($room['category'] === 'non_ac') {
     <div class="card-img-holder relative h-64 group m-3 mb-0">
         <img src="<?php echo htmlspecialchars($room['featured_image']); ?>" 
              alt="<?php echo htmlspecialchars($room['name']); ?>" 
+             onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1000&q=80';"
              class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
         
         <!-- Category Badge -->

@@ -123,6 +123,7 @@ if (empty($featuredRooms)) {
                 <div class="royal-arch-frame w-full max-w-[420px] h-[380px] sm:h-[460px] bg-slate-900 relative">
                     <img src="<?php echo htmlspecialchars($heroArchway['image_path']); ?>" 
                          alt="<?php echo htmlspecialchars($heroArchway['title'] ?? $settings['hotel_name']); ?>" 
+                         onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1000&q=80';"
                          class="w-full h-full object-cover">
                     
                     <!-- Center Overlay Crest on Archway -->
@@ -136,7 +137,7 @@ if (empty($featuredRooms)) {
 
                 <!-- Floating Mini Preview 1 (Top Left) -->
                 <div class="floating-hero-preview-1 absolute -top-4 -left-3 sm:-left-6 bg-white/95 backdrop-blur-md rounded-2xl p-2.5 sm:p-3 border border-[#d4a359]/50 shadow-2xl flex items-center space-x-3 max-w-[200px] sm:max-w-[220px]">
-                    <img src="<?php echo htmlspecialchars($heroPreview1['image_path']); ?>" alt="<?php echo htmlspecialchars($heroPreview1['title']); ?>" class="w-11 h-11 rounded-xl object-cover border border-[#d4a359]/40">
+                    <img src="<?php echo htmlspecialchars($heroPreview1['image_path']); ?>" alt="<?php echo htmlspecialchars($heroPreview1['title']); ?>" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=400&q=80';" class="w-11 h-11 rounded-xl object-cover border border-[#d4a359]/40">
                     <div>
                         <strong class="text-xs text-[#2b0e14] block leading-tight"><?php echo htmlspecialchars($heroPreview1['title']); ?></strong>
                         <span class="text-[10px] text-[#b88738] font-bold"><?php echo htmlspecialchars($heroPreview1['badge_text']); ?></span>
@@ -145,7 +146,7 @@ if (empty($featuredRooms)) {
 
                 <!-- Floating Mini Preview 2 (Bottom Right) -->
                 <div class="floating-hero-preview-2 absolute -bottom-4 -right-3 sm:-right-6 bg-white/95 backdrop-blur-md rounded-2xl p-2.5 sm:p-3 border border-[#d4a359]/50 shadow-2xl flex items-center space-x-3 max-w-[200px] sm:max-w-[230px]">
-                    <img src="<?php echo htmlspecialchars($heroPreview2['image_path']); ?>" alt="<?php echo htmlspecialchars($heroPreview2['title']); ?>" class="w-11 h-11 rounded-xl object-cover border border-[#d4a359]/40">
+                    <img src="<?php echo htmlspecialchars($heroPreview2['image_path']); ?>" alt="<?php echo htmlspecialchars($heroPreview2['title']); ?>" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80';" class="w-11 h-11 rounded-xl object-cover border border-[#d4a359]/40">
                     <div>
                         <strong class="text-xs text-[#2b0e14] block leading-tight"><?php echo htmlspecialchars($heroPreview2['title']); ?></strong>
                         <span class="text-[10px] text-emerald-700 font-bold"><?php echo htmlspecialchars($heroPreview2['badge_text']); ?></span>
@@ -232,7 +233,7 @@ if (empty($featuredRooms)) {
                     <!-- Main Archway Frame with auto slider -->
                     <div class="royal-arch-frame w-full h-96 sm:h-[440px] bg-slate-900 relative border-4 border-white shadow-2xl">
                         <?php foreach (array_values($aboutRoomSlides) as $aIdx => $aSlide): ?>
-                            <img src="<?php echo htmlspecialchars($aSlide['image_path']); ?>" alt="<?php echo htmlspecialchars($aSlide['title']); ?>" class="about-room-slide <?php echo $aIdx === 0 ? 'active' : ''; ?>">
+                            <img src="<?php echo htmlspecialchars($aSlide['image_path']); ?>" alt="<?php echo htmlspecialchars($aSlide['title']); ?>" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80';" class="about-room-slide <?php echo $aIdx === 0 ? 'active' : ''; ?>">
                         <?php endforeach; ?>
                     </div>
 

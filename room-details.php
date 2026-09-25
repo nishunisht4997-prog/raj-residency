@@ -132,6 +132,7 @@ $similarRooms = array_slice(array_values($similarRooms), 0, 3);
                         <img id="main-room-img" 
                              src="<?php echo htmlspecialchars($gallery[0]); ?>" 
                              alt="<?php echo htmlspecialchars($room['name']); ?>" 
+                             onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1000&q=80';"
                              class="w-full h-full object-cover group-hover:scale-105 transition duration-700 cursor-pointer"
                              onclick="openRoomLightbox(currentGalleryIndex)">
                         
@@ -167,7 +168,7 @@ $similarRooms = array_slice(array_values($similarRooms), 0, 3);
                                         onclick="switchDetailImage('<?php echo htmlspecialchars($gImg); ?>', <?php echo $gIdx; ?>)" 
                                         id="thumb-btn-<?php echo $gIdx; ?>"
                                         class="thumb-btn relative h-16 sm:h-20 w-24 sm:w-28 shrink-0 rounded-2xl overflow-hidden border-2 transition duration-300 focus:outline-none <?php echo $gIdx === 0 ? 'border-[#b88738] shadow-md ring-2 ring-[#d4a359]/50 scale-95' : 'border-slate-200 hover:border-[#d4a359] opacity-80 hover:opacity-100'; ?>">
-                                    <img src="<?php echo htmlspecialchars($gImg); ?>" alt="Thumbnail <?php echo $gIdx + 1; ?>" class="w-full h-full object-cover">
+                                    <img src="<?php echo htmlspecialchars($gImg); ?>" alt="Thumbnail <?php echo $gIdx + 1; ?>" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=400&q=80';" class="w-full h-full object-cover">
                                 </button>
                             <?php endforeach; ?>
                         </div>
