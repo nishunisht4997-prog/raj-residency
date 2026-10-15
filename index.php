@@ -119,18 +119,25 @@ if (empty($featuredRooms)) {
                     'badge_text' => '24/7 Travel Desk'
                 ];
                 ?>
-                <!-- Main Archway Frame (Jharokha Style) -->
-                <div class="royal-arch-frame w-full max-w-[420px] h-[380px] sm:h-[460px] bg-slate-900 relative">
+                <!-- Main Hero Showcase Frame (Zero-Cut Smart Fit for Any Image Dimension) -->
+                <div class="hero-showcase-fit group">
+                    <!-- Ambient blurred backdrop matching the image colors -->
+                    <div class="ambient-backdrop" style="background-image: url('<?php echo htmlspecialchars($heroArchway['image_path']); ?>');"></div>
+                    
+                    <!-- Foreground 100% complete uncropped image -->
                     <img src="<?php echo htmlspecialchars($heroArchway['image_path']); ?>" 
                          alt="<?php echo htmlspecialchars($heroArchway['title'] ?? $settings['hotel_name']); ?>" 
                          onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1000&q=80';"
-                         class="w-full h-full object-cover">
+                         class="showcase-img">
                     
-                    <!-- Center Overlay Crest on Archway -->
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#1c080d]/80 via-transparent to-transparent flex items-end p-6">
-                        <div class="text-white">
-                            <span class="text-[10px] font-bold text-[#f3cf8a] uppercase tracking-widest block"><?php echo htmlspecialchars($heroArchway['badge_text'] ?? 'POST OFFICE ROAD, KORAPUT'); ?></span>
-                            <span class="font-serif text-lg font-bold text-white"><?php echo htmlspecialchars($heroArchway['title'] ?? 'Authentic Royal Comfort'); ?></span>
+                    <!-- Bottom Glassmorphic Caption Banner -->
+                    <div class="absolute bottom-3 sm:bottom-4 inset-x-3 sm:inset-x-4 z-20 bg-gradient-to-r from-[#1c080d]/95 via-[#2b0e14]/90 to-[#1c080d]/95 backdrop-blur-md px-4 py-2.5 sm:py-3 rounded-2xl border border-[#d4a359]/40 shadow-xl flex items-center justify-between">
+                        <div>
+                            <span class="text-[9px] sm:text-[10px] font-bold text-[#f3cf8a] uppercase tracking-widest block"><?php echo htmlspecialchars($heroArchway['badge_text'] ?? 'POST OFFICE ROAD, KORAPUT'); ?></span>
+                            <span class="font-serif text-sm sm:text-base font-bold text-white"><?php echo htmlspecialchars($heroArchway['title'] ?? 'Authentic Royal Comfort'); ?></span>
+                        </div>
+                        <div class="w-8 h-8 rounded-full bg-[#d4a359]/20 border border-[#d4a359]/60 flex items-center justify-center text-[#f3cf8a] text-xs shrink-0 ml-2">
+                            <i class="fa-solid fa-crown text-[11px]"></i>
                         </div>
                     </div>
                 </div>

@@ -1,8 +1,4 @@
 -- database.sql - Complete MySQL Database Schema and Seed Data for Raj Residency
--- Target Database: raj_residency
-
-CREATE DATABASE IF NOT EXISTS `raj_residency` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE `raj_residency`;
 
 -- 1. Table structure for `settings`
 DROP TABLE IF EXISTS `settings`;

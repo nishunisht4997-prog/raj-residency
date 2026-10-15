@@ -132,9 +132,9 @@ $tabSections = [
         'desc' => 'Fullscreen rotating background photos displayed in the main hero section of the home page.'
     ],
     'hero_archway' => [
-        'name' => 'Archway Box & Previews',
-        'icon' => 'fa-solid fa-archway',
-        'desc' => 'The majestic royal archway frame photo and the 2 floating badge preview cards on the home page hero.'
+        'name' => 'Hero Showcase & Previews',
+        'icon' => 'fa-solid fa-crown',
+        'desc' => 'The main hero showcase photo and the 2 floating badges on the home page. (✨ Smart Auto-Fit Enabled: Whatever photo you upload fits 100% cleanly without getting cut or cropped!).'
     ],
     'about_rooms' => [
         'name' => 'About Us: Luxury Rooms',
