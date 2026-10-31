@@ -7,30 +7,41 @@ $action = $_GET['action'] ?? 'list';
 $editId = (int)($_GET['id'] ?? 0);
 $editRoom = $editId > 0 ? get_room_by_id($editId) : null;
 
-// Standard Amenities List
+// Standard Amenities List (Aligned with Raj Residency Koraput Policies)
 $standardAmenities = [
-    'Split Air Conditioner',
-    'High-Speed Optical Fiber Wi-Fi',
+    'Climate: Non-AC (Ceiling Fan)',
+    'Climate: Window AC',
+    'Climate: Split AC',
+    '24" LED TV',
+    '32" LED TV',
     '43" Full HD Smart TV',
-    '24/7 Hot & Cold Geyser Water',
-    'Electric Tea/Coffee Maker',
+    '24/7 Hot & Cold Geyser Water (Central Geyser)',
+    '24/7 Hot & Cold Geyser Water (Self Individual Geyser)',
+    'High-Speed Optical Fiber Wi-Fi',
+    'Electric Kettle Available',
     'Dedicated Work Desk & Chair',
+    'Intercom Phone Facility (Dial #222)',
     'Daily Room Sanitization & Housekeeping',
-    'Intercom Phone Facility',
-    'Scenic Hill / City View Balcony Window',
-    'Mini Refrigerator',
-    'Complimentary Breakfast Option',
-    'Attached Modern Washroom'
+    'Bathtub Available in Bathroom',
+    'Mini Refrigerator Available',
+    'Living Lounge (Sofa Set & Tea Table)',
+    'Mini Refrigerator Not Available For This Room',
+    'Dental Kits Not Available',
+    'Welcome Drink Not Provided'
 ];
 
-// Standard Inclusions List
+// Standard Inclusions & Stay Policies List
 $standardInclusions = [
-    'Complimentary High-speed Wi-Fi',
-    'Packaged Mineral Water (2 Bottles daily)',
-    'Fresh Bath Towels & Luxury Dental/Soap Kits',
-    'Free Secure Basement Parking',
-    'Welcome Drink on Arrival',
-    'Complimentary Royal Buffet Breakfast'
+    'Complimentary A La Carte Breakfast (Not Buffet)',
+    'Packaged Regular Water (2 Bottles Daily - Not Mineral Water)',
+    'Free Secure Hotel Front Side Self Parking (No Basement Parking)',
+    'High-Speed Optical Fiber Wi-Fi',
+    'Daily Sanitized Linens & Housekeeping',
+    'Check-in: 10:00 AM & Check-out: 08:00 AM',
+    'Government Photo ID Mandatory (Local ID Not Allowed)',
+    '18+ Couples Allowed (Unmarried Couples Allowed)',
+    'Free Cancellation Guarantee (Before 24 Hours)',
+    'Max Occupancy: 2 Adults (Extra Person: ₹350/person)'
 ];
 
 // -------------------------------------------------------------

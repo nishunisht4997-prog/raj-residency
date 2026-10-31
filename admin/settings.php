@@ -17,8 +17,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save_settings'])) {
         'hotel_booking_email'=> sanitize($_POST['hotel_booking_email'] ?? 'booking@rajresidency.com'),
         'hotel_whatsapp'     => sanitize($_POST['hotel_whatsapp'] ?? '918328910274'),
         'hotel_address'      => sanitize($_POST['hotel_address'] ?? 'POST OFFICE ROAD, DIST - KORAPUT, ODISHA, PIN - 764020'),
-        'check_in_time'      => sanitize($_POST['check_in_time'] ?? '12:00 PM'),
-        'check_out_time'     => sanitize($_POST['check_out_time'] ?? '11:00 AM'),
+        'check_in_time'      => sanitize($_POST['check_in_time'] ?? '10:00 AM'),
+        'check_out_time'     => sanitize($_POST['check_out_time'] ?? '08:00 AM'),
+        'intercom_number'    => sanitize($_POST['intercom_number'] ?? '#222'),
+        'breakfast_timing'   => sanitize($_POST['breakfast_timing'] ?? '08:00 AM TO 11:00 AM (A La Carte, Not Buffet)'),
+        'lunch_timing'       => sanitize($_POST['lunch_timing'] ?? '11:30 AM TO 03:30 PM (Lunch Thalis Not Available)'),
+        'snacks_timing'      => sanitize($_POST['snacks_timing'] ?? '04:00 PM TO 07:00 PM (A La Carte)'),
+        'dinner_timing'      => sanitize($_POST['dinner_timing'] ?? '07:00 PM TO 10:00 PM (Thalis Not Available)'),
+        'dining_notice'      => sanitize($_POST['dining_notice'] ?? 'No 24/7 In-Room Dining (Strictly within meal times)'),
+        'parking_policy'     => sanitize($_POST['parking_policy'] ?? 'Free Secure Hotel Front Side Self Parking (No Basement Parking)'),
+        'id_policy'          => sanitize($_POST['id_policy'] ?? 'Government Photo ID Mandatory (Local ID Not Allowed)'),
+        'couples_policy'     => sanitize($_POST['couples_policy'] ?? '18+ Years Couples Allowed (Unmarried Couples Allowed)'),
+        'extra_person_charge'=> sanitize($_POST['extra_person_charge'] ?? '350'),
         'currency_symbol'    => sanitize($_POST['currency_symbol'] ?? '₹'),
         'tax_percentage'     => sanitize($_POST['tax_percentage'] ?? '12'),
         'map_embed_url'      => trim($_POST['map_embed_url'] ?? '')
@@ -151,11 +161,11 @@ require_once __DIR__ . '/includes/admin_header.php';
                     <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
                         <div>
                             <label for="check_in_time" class="block text-[11px] font-bold uppercase tracking-wider text-slate-600 mb-1">Check-In</label>
-                            <input type="text" id="check_in_time" name="check_in_time" value="<?php echo htmlspecialchars($settings['check_in_time']); ?>" class="w-full bg-[#fbf9f5] border border-[#ebd9c8] rounded-xl px-3 py-2.5 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#d4a359]">
+                            <input type="text" id="check_in_time" name="check_in_time" value="<?php echo htmlspecialchars($settings['check_in_time'] ?? '10:00 AM'); ?>" class="w-full bg-[#fbf9f5] border border-[#ebd9c8] rounded-xl px-3 py-2.5 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#d4a359]">
                         </div>
                         <div>
                             <label for="check_out_time" class="block text-[11px] font-bold uppercase tracking-wider text-slate-600 mb-1">Check-Out</label>
-                            <input type="text" id="check_out_time" name="check_out_time" value="<?php echo htmlspecialchars($settings['check_out_time']); ?>" class="w-full bg-[#fbf9f5] border border-[#ebd9c8] rounded-xl px-3 py-2.5 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#d4a359]">
+                            <input type="text" id="check_out_time" name="check_out_time" value="<?php echo htmlspecialchars($settings['check_out_time'] ?? '08:00 AM'); ?>" class="w-full bg-[#fbf9f5] border border-[#ebd9c8] rounded-xl px-3 py-2.5 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#d4a359]">
                         </div>
                         <div>
                             <label for="currency_symbol" class="block text-[11px] font-bold uppercase tracking-wider text-slate-600 mb-1">Currency</label>
@@ -164,6 +174,71 @@ require_once __DIR__ . '/includes/admin_header.php';
                         <div>
                             <label for="tax_percentage" class="block text-[11px] font-bold uppercase tracking-wider text-slate-600 mb-1">GST Tax (%)</label>
                             <input type="number" id="tax_percentage" name="tax_percentage" value="<?php echo (float)($settings['tax_percentage'] ?? 12); ?>" class="w-full bg-[#fbf9f5] border border-[#ebd9c8] rounded-xl px-3 py-2.5 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#d4a359]">
+                        </div>
+                    </div>
+
+                    <!-- 🍽️ RESTAURANT, MEAL TIMINGS & INTERCOM -->
+                    <div class="p-5 rounded-2xl bg-gradient-to-br from-[#fcfaf7] to-[#f5efe6] border border-[#d4a359]/40 space-y-4">
+                        <div class="flex items-center space-x-2 text-xs font-black text-[#2b0e14] uppercase border-b border-[#ebd9c8] pb-2">
+                            <i class="fa-solid fa-utensils text-[#d4a359]"></i>
+                            <span>In-House Restaurant, Meal Timings & Intercom</span>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label for="intercom_number" class="block text-[11px] font-bold uppercase tracking-wider text-slate-600 mb-1">Intercom Extension</label>
+                                <input type="text" id="intercom_number" name="intercom_number" value="<?php echo htmlspecialchars($settings['intercom_number'] ?? '#222'); ?>" placeholder="#222" class="w-full bg-white border border-[#ebd9c8] rounded-xl px-3.5 py-2.5 text-xs font-bold text-[#2b0e14] focus:outline-none focus:ring-2 focus:ring-[#d4a359]">
+                            </div>
+                            <div>
+                                <label for="dining_notice" class="block text-[11px] font-bold uppercase tracking-wider text-slate-600 mb-1">In-Room Dining Notice</label>
+                                <input type="text" id="dining_notice" name="dining_notice" value="<?php echo htmlspecialchars($settings['dining_notice'] ?? 'No 24/7 In-Room Dining (Strictly within meal times)'); ?>" class="w-full bg-white border border-[#ebd9c8] rounded-xl px-3.5 py-2.5 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#d4a359]">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
+                            <div>
+                                <label for="breakfast_timing" class="block text-[11px] font-bold uppercase tracking-wider text-slate-600 mb-1">Breakfast Timing & Menu</label>
+                                <input type="text" id="breakfast_timing" name="breakfast_timing" value="<?php echo htmlspecialchars($settings['breakfast_timing'] ?? '08:00 AM TO 11:00 AM (A La Carte, Not Buffet)'); ?>" class="w-full bg-white border border-[#ebd9c8] rounded-xl px-3.5 py-2 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#d4a359]">
+                            </div>
+                            <div>
+                                <label for="lunch_timing" class="block text-[11px] font-bold uppercase tracking-wider text-slate-600 mb-1">Lunch Timing & Policy</label>
+                                <input type="text" id="lunch_timing" name="lunch_timing" value="<?php echo htmlspecialchars($settings['lunch_timing'] ?? '11:30 AM TO 03:30 PM (Lunch Thalis Not Available)'); ?>" class="w-full bg-white border border-[#ebd9c8] rounded-xl px-3.5 py-2 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#d4a359]">
+                            </div>
+                            <div>
+                                <label for="snacks_timing" class="block text-[11px] font-bold uppercase tracking-wider text-slate-600 mb-1">Evening Snacks Timing</label>
+                                <input type="text" id="snacks_timing" name="snacks_timing" value="<?php echo htmlspecialchars($settings['snacks_timing'] ?? '04:00 PM TO 07:00 PM (A La Carte)'); ?>" class="w-full bg-white border border-[#ebd9c8] rounded-xl px-3.5 py-2 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#d4a359]">
+                            </div>
+                            <div>
+                                <label for="dinner_timing" class="block text-[11px] font-bold uppercase tracking-wider text-slate-600 mb-1">Dinner Timing & Policy</label>
+                                <input type="text" id="dinner_timing" name="dinner_timing" value="<?php echo htmlspecialchars($settings['dinner_timing'] ?? '07:00 PM TO 10:00 PM (Thalis Not Available)'); ?>" class="w-full bg-white border border-[#ebd9c8] rounded-xl px-3.5 py-2 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#d4a359]">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 📜 HOTEL POLICIES & PARKING -->
+                    <div class="p-5 rounded-2xl bg-gradient-to-br from-[#fcfaf7] to-[#f5efe6] border border-[#d4a359]/40 space-y-4">
+                        <div class="flex items-center space-x-2 text-xs font-black text-[#2b0e14] uppercase border-b border-[#ebd9c8] pb-2">
+                            <i class="fa-solid fa-shield-halved text-[#d4a359]"></i>
+                            <span>Hotel Stay Policies, ID Rules & Parking</span>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label for="parking_policy" class="block text-[11px] font-bold uppercase tracking-wider text-slate-600 mb-1">Parking Policy</label>
+                                <input type="text" id="parking_policy" name="parking_policy" value="<?php echo htmlspecialchars($settings['parking_policy'] ?? 'Free Secure Hotel Front Side Self Parking (No Basement Parking)'); ?>" class="w-full bg-white border border-[#ebd9c8] rounded-xl px-3.5 py-2 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#d4a359]">
+                            </div>
+                            <div>
+                                <label for="id_policy" class="block text-[11px] font-bold uppercase tracking-wider text-slate-600 mb-1">Guest ID Policy</label>
+                                <input type="text" id="id_policy" name="id_policy" value="<?php echo htmlspecialchars($settings['id_policy'] ?? 'Government Photo ID Mandatory (Local ID Not Allowed)'); ?>" class="w-full bg-white border border-[#ebd9c8] rounded-xl px-3.5 py-2 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#d4a359]">
+                            </div>
+                            <div>
+                                <label for="couples_policy" class="block text-[11px] font-bold uppercase tracking-wider text-slate-600 mb-1">Couples Policy</label>
+                                <input type="text" id="couples_policy" name="couples_policy" value="<?php echo htmlspecialchars($settings['couples_policy'] ?? '18+ Years Couples Allowed (Unmarried Couples Allowed)'); ?>" class="w-full bg-white border border-[#ebd9c8] rounded-xl px-3.5 py-2 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#d4a359]">
+                            </div>
+                            <div>
+                                <label for="extra_person_charge" class="block text-[11px] font-bold uppercase tracking-wider text-slate-600 mb-1">Extra Person Charge (₹)</label>
+                                <input type="number" id="extra_person_charge" name="extra_person_charge" value="<?php echo (float)($settings['extra_person_charge'] ?? 350); ?>" placeholder="350" class="w-full bg-white border border-[#ebd9c8] rounded-xl px-3.5 py-2 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#d4a359]">
+                            </div>
                         </div>
                     </div>
 

@@ -266,29 +266,35 @@ $similarRooms = array_slice(array_values($similarRooms), 0, 3);
                         <?php 
                         $amenities = is_array($room['amenities']) ? $room['amenities'] : [];
                         
-                        // Smart Icon Assigner for Amenities
+                        // Smart Icon Assigner for Amenities & Notices
                         function getAmenityIcon($name) {
-                            $name = strtolower($name);
-                            if (strpos($name, 'wi-fi') !== false || strpos($name, 'wifi') !== false) return 'fa-solid fa-wifi text-blue-600';
-                            if (strpos($name, 'tv') !== false || strpos($name, 'led') !== false) return 'fa-solid fa-tv text-indigo-600';
-                            if (strpos($name, 'ac') !== false || strpos($name, 'condition') !== false) return 'fa-solid fa-snowflake text-sky-600';
-                            if (strpos($name, 'hot water') !== false || strpos($name, 'geyser') !== false) return 'fa-solid fa-shower text-amber-600';
-                            if (strpos($name, 'service') !== false || strpos($name, 'dining') !== false) return 'fa-solid fa-bell-concierge text-rose-600';
-                            if (strpos($name, 'power') !== false || strpos($name, 'generator') !== false) return 'fa-solid fa-bolt text-amber-500';
-                            if (strpos($name, 'wardrobe') !== false || strpos($name, 'closet') !== false) return 'fa-solid fa-door-closed text-slate-600';
-                            if (strpos($name, 'kettle') !== false || strpos($name, 'tea') !== false) return 'fa-solid fa-mug-hot text-emerald-600';
-                            if (strpos($name, 'desk') !== false || strpos($name, 'chair') !== false) return 'fa-solid fa-chair text-amber-800';
+                            $lower = strtolower($name);
+                            if (strpos($lower, 'not available') !== false || strpos($lower, 'not provide') !== false) return 'fa-solid fa-circle-exclamation text-amber-600';
+                            if (strpos($lower, 'wi-fi') !== false || strpos($lower, 'wifi') !== false) return 'fa-solid fa-wifi text-blue-600';
+                            if (strpos($lower, 'tv') !== false || strpos($lower, 'led') !== false) return 'fa-solid fa-tv text-indigo-600';
+                            if (strpos($lower, 'bathtub') !== false || strpos($lower, 'bath') !== false) return 'fa-solid fa-bath text-indigo-600';
+                            if (strpos($lower, 'ac') !== false || strpos($lower, 'climate') !== false) return 'fa-solid fa-snowflake text-sky-600';
+                            if (strpos($lower, 'hot water') !== false || strpos($lower, 'geyser') !== false) return 'fa-solid fa-shower text-amber-600';
+                            if (strpos($lower, 'kettle') !== false || strpos($lower, 'tea') !== false) return 'fa-solid fa-mug-hot text-emerald-600';
+                            if (strpos($lower, 'desk') !== false || strpos($lower, 'chair') !== false || strpos($lower, 'lounge') !== false || strpos($lower, 'sofa') !== false) return 'fa-solid fa-couch text-amber-800';
+                            if (strpos($lower, 'refrigerator') !== false || strpos($lower, 'fridge') !== false) return 'fa-solid fa-temperature-arrow-down text-blue-600';
+                            if (strpos($lower, 'intercom') !== false || strpos($lower, 'phone') !== false) return 'fa-solid fa-phone text-amber-600';
+                            if (strpos($lower, 'water') !== false) return 'fa-solid fa-bottle-water text-cyan-600';
+                            if (strpos($lower, 'parking') !== false) return 'fa-solid fa-square-parking text-emerald-600';
                             return 'fa-solid fa-circle-check text-emerald-600';
                         }
 
                         foreach ($amenities as $am): 
                             $iconClass = getAmenityIcon($am);
+                            $isDisclaimer = (stripos($am, 'not available') !== false || stripos($am, 'not provide') !== false);
                         ?>
-                            <div class="flex items-center space-x-3 p-3.5 rounded-2xl bg-[#fbf9f5] border border-[#ebd9c8] hover:border-[#d4a359] transition">
+                            <div class="flex items-center space-x-3 p-3.5 rounded-2xl <?php echo $isDisclaimer ? 'bg-amber-50/80 border border-amber-200' : 'bg-[#fbf9f5] border border-[#ebd9c8] hover:border-[#d4a359]'; ?> transition">
                                 <div class="w-8 h-8 rounded-xl bg-white flex items-center justify-center shadow-sm shrink-0">
                                     <i class="<?php echo $iconClass; ?> text-sm"></i>
                                 </div>
-                                <span class="text-xs font-bold text-slate-800"><?php echo htmlspecialchars($am); ?></span>
+                                <span class="text-xs font-bold <?php echo $isDisclaimer ? 'text-amber-900' : 'text-slate-800'; ?>">
+                                    <?php echo htmlspecialchars($am); ?>
+                                </span>
                             </div>
                         <?php endforeach; ?>
                     </div>
@@ -334,9 +340,9 @@ $similarRooms = array_slice(array_values($similarRooms), 0, 3);
                                 <i class="fa-regular fa-clock text-[#d4a359]"></i>
                                 <span>Check-In & Check-Out</span>
                             </div>
-                            <p class="text-[11px] text-slate-600">Check-In: <strong><?php echo htmlspecialchars($settings['check_in_time'] ?? '12:00 PM'); ?></strong></p>
-                            <p class="text-[11px] text-slate-600">Check-Out: <strong><?php echo htmlspecialchars($settings['check_out_time'] ?? '11:00 AM'); ?></strong></p>
-                            <span class="text-[10px] text-slate-400">Early check-in subject to room availability</span>
+                            <p class="text-[11px] text-slate-600">Check-In: <strong><?php echo htmlspecialchars($settings['check_in_time'] ?? '10:00 AM'); ?></strong></p>
+                            <p class="text-[11px] text-slate-600">Check-Out: <strong><?php echo htmlspecialchars($settings['check_out_time'] ?? '08:00 AM'); ?></strong></p>
+                            <span class="text-[10px] text-slate-400">Strict hotel schedule (Subject to room availability)</span>
                         </div>
 
                         <div class="p-4 rounded-2xl bg-[#fbf9f5] border border-[#ebd9c8] space-y-1">
@@ -344,8 +350,35 @@ $similarRooms = array_slice(array_values($similarRooms), 0, 3);
                                 <i class="fa-solid fa-id-card text-[#d4a359]"></i>
                                 <span>Government Photo ID</span>
                             </div>
-                            <p class="text-[11px] text-slate-600">Aadhaar, Driving License, or Passport is mandatory for each adult guest at reception.</p>
-                            <span class="text-[10px] text-emerald-700 font-semibold">Strict safety & hotel compliance</span>
+                            <p class="text-[11px] text-slate-600"><?php echo htmlspecialchars($settings['id_policy'] ?? 'Government photo ID mandatory at reception. Local Koraput ID not allowed.'); ?></p>
+                            <span class="text-[10px] text-rose-700 font-bold bg-rose-50 px-2 py-0.5 rounded-full inline-block mt-0.5 border border-rose-200">Local ID Not Allowed</span>
+                        </div>
+
+                        <div class="p-4 rounded-2xl bg-[#fbf9f5] border border-[#ebd9c8] space-y-1">
+                            <div class="flex items-center space-x-2 text-xs font-bold text-[#2b0e14]">
+                                <i class="fa-solid fa-heart text-[#d4a359]"></i>
+                                <span>Couples & Extra Guest</span>
+                            </div>
+                            <p class="text-[11px] text-slate-600"><?php echo htmlspecialchars($settings['couples_policy'] ?? '18+ year couple only allowed (unmarried couples allowed).'); ?></p>
+                            <span class="text-[10px] text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded-full inline-block mt-0.5 border border-emerald-200">Unmarried Couples Allowed • Extra Person: ₹350</span>
+                        </div>
+
+                        <div class="p-4 rounded-2xl bg-[#fbf9f5] border border-[#ebd9c8] space-y-1">
+                            <div class="flex items-center space-x-2 text-xs font-bold text-[#2b0e14]">
+                                <i class="fa-solid fa-square-parking text-[#d4a359]"></i>
+                                <span>Vehicle Parking Policy</span>
+                            </div>
+                            <p class="text-[11px] text-slate-600"><?php echo htmlspecialchars($settings['parking_policy'] ?? 'Free Secure Hotel Front Side Self Parking (No Basement Parking).'); ?></p>
+                            <span class="text-[10px] text-amber-800 font-bold bg-amber-50 px-2 py-0.5 rounded-full inline-block mt-0.5 border border-amber-200">Front Side Parking (No Basement)</span>
+                        </div>
+
+                        <div class="p-4 rounded-2xl bg-[#fbf9f5] border border-[#ebd9c8] space-y-1">
+                            <div class="flex items-center space-x-2 text-xs font-bold text-[#2b0e14]">
+                                <i class="fa-solid fa-utensils text-[#d4a359]"></i>
+                                <span>Dining & Room Service</span>
+                            </div>
+                            <p class="text-[11px] text-slate-600"><?php echo htmlspecialchars($settings['dining_notice'] ?? 'No 24/7 In-Room Dining. Meals served strictly during specified restaurant timings.'); ?></p>
+                            <span class="text-[10px] text-blue-700 font-bold bg-blue-50 px-2 py-0.5 rounded-full inline-block mt-0.5 border border-blue-200">Dial Intercom #222</span>
                         </div>
 
                         <div class="p-4 rounded-2xl bg-[#fbf9f5] border border-[#ebd9c8] space-y-1">
@@ -353,17 +386,8 @@ $similarRooms = array_slice(array_values($similarRooms), 0, 3);
                                 <i class="fa-solid fa-rotate-left text-[#d4a359]"></i>
                                 <span>Free Cancellation Guarantee</span>
                             </div>
-                            <p class="text-[11px] text-slate-600">Cancel or reschedule up to 24 hours before check-in date without penalty.</p>
-                            <span class="text-[10px] text-emerald-700 font-semibold">100% stress-free reservations</span>
-                        </div>
-
-                        <div class="p-4 rounded-2xl bg-[#fbf9f5] border border-[#ebd9c8] space-y-1">
-                            <div class="flex items-center space-x-2 text-xs font-bold text-[#2b0e14]">
-                                <i class="fa-solid fa-ban-smoking text-[#d4a359]"></i>
-                                <span>Clean Air & Family Atmosphere</span>
-                            </div>
-                            <p class="text-[11px] text-slate-600">Smoking is strictly prohibited inside bedrooms. Dedicated outdoor smoking zones available.</p>
-                            <span class="text-[10px] text-slate-500">24/7 CCTV & Security</span>
+                            <p class="text-[11px] text-slate-600">Free cancellation guarantee (before 24 hours of check-in time).</p>
+                            <span class="text-[10px] text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded-full inline-block mt-0.5 border border-emerald-200">100% Risk Free</span>
                         </div>
                     </div>
                 </div>

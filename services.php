@@ -93,52 +93,67 @@ $diningSlides = array_values($diningSlides);
                         <span>ROYAL DINING EXPERIENCE</span>
                     </div>
                     <h2 class="font-serif text-3xl sm:text-4xl font-bold text-[#2b0e14] leading-tight">
-                        In-House Multi-Cuisine Restaurant & Buffet Delicacies
+                        In-House Multi-Cuisine Restaurant & Fresh Delicacies
                     </h2>
                     <p class="text-xs sm:text-sm text-slate-700 leading-relaxed font-light">
-                        At <strong class="text-[#2b0e14] font-semibold"><?php echo htmlspecialchars($settings['hotel_name']); ?></strong>, food is a celebratory affair. Our master chefs prepare fresh traditional Odia specialties, mouth-watering North Indian curries, South Indian breakfast tiffins, and Continental dishes using pure local spices and farm-fresh ingredients.
+                        At <strong class="text-[#2b0e14] font-semibold"><?php echo htmlspecialchars($settings['hotel_name']); ?></strong>, food is prepared fresh to order. Enjoy authentic traditional Odia cuisine, rich North Indian curries, South Indian breakfast specialties, and tea/coffee served with royal warmth and hygiene.
                     </p>
                 </div>
 
-                <!-- Timings & Highlights Grid -->
+                <!-- Timings & Highlights Grid (Aligned with Official Hotel Schedule) -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                     
+                    <!-- Breakfast -->
                     <div class="p-4 rounded-2xl bg-[#f5efe6] border border-[#ebd9c8] space-y-1">
                         <div class="flex items-center space-x-2 text-[#2b0e14] font-bold text-xs">
                             <i class="fa-solid fa-mug-saucer text-[#d4a359]"></i>
-                            <span>Morning Buffet Breakfast</span>
+                            <span>A La Carte Breakfast</span>
                         </div>
-                        <p class="text-[11px] text-slate-600">7:00 AM – 10:30 AM Daily</p>
-                        <span class="text-[10px] text-emerald-700 font-semibold block">Fresh dosas, poori bhaji, tea & coffee</span>
+                        <p class="text-[11px] font-bold text-[#2b0e14]"><?php echo htmlspecialchars($settings['breakfast_timing'] ?? '08:00 AM – 11:00 AM'); ?></p>
+                        <span class="text-[10px] text-amber-800 font-semibold block">A La Carte Menu (Not Buffet Breakfast)</span>
                     </div>
 
-                    <div class="p-4 rounded-2xl bg-[#f5efe6] border border-[#ebd9c8] space-y-1">
-                        <div class="flex items-center space-x-2 text-[#2b0e14] font-bold text-xs">
-                            <i class="fa-solid fa-bell-concierge text-[#d4a359]"></i>
-                            <span>24/7 In-Room Dining</span>
-                        </div>
-                        <p class="text-[11px] text-slate-600">Round-the-clock room service</p>
-                        <span class="text-[10px] text-emerald-700 font-semibold block">Dial intercom for instant delivery</span>
-                    </div>
-
+                    <!-- Lunch -->
                     <div class="p-4 rounded-2xl bg-[#f5efe6] border border-[#ebd9c8] space-y-1">
                         <div class="flex items-center space-x-2 text-[#2b0e14] font-bold text-xs">
                             <i class="fa-solid fa-bowl-rice text-[#d4a359]"></i>
-                            <span>Lunch Thalis & Specialties</span>
+                            <span>Lunch Hours</span>
                         </div>
-                        <p class="text-[11px] text-slate-600">12:30 PM – 3:30 PM</p>
-                        <span class="text-[10px] text-slate-500 block">Authentic Odia & North Indian Thalis</span>
+                        <p class="text-[11px] font-bold text-[#2b0e14]"><?php echo htmlspecialchars($settings['lunch_timing'] ?? '11:30 AM – 03:30 PM'); ?></p>
+                        <span class="text-[10px] text-rose-700 font-bold block">Lunch Thalis Not Available</span>
                     </div>
 
+                    <!-- Evening Snacks -->
                     <div class="p-4 rounded-2xl bg-[#f5efe6] border border-[#ebd9c8] space-y-1">
                         <div class="flex items-center space-x-2 text-[#2b0e14] font-bold text-xs">
-                            <i class="fa-solid fa-champagne-glasses text-[#d4a359]"></i>
-                            <span>Dinner & Family Gathering</span>
+                            <i class="fa-solid fa-cookie-bite text-[#d4a359]"></i>
+                            <span>Evening Snacks & Tea</span>
                         </div>
-                        <p class="text-[11px] text-slate-600">7:30 PM – 11:00 PM</p>
-                        <span class="text-[10px] text-slate-500 block">Cozy royal ambience for families</span>
+                        <p class="text-[11px] font-bold text-[#2b0e14]"><?php echo htmlspecialchars($settings['snacks_timing'] ?? '04:00 PM – 07:00 PM'); ?></p>
+                        <span class="text-[10px] text-emerald-700 font-semibold block">Fresh Tea, Coffee & Savory Snacks</span>
                     </div>
 
+                    <!-- Dinner -->
+                    <div class="p-4 rounded-2xl bg-[#f5efe6] border border-[#ebd9c8] space-y-1">
+                        <div class="flex items-center space-x-2 text-[#2b0e14] font-bold text-xs">
+                            <i class="fa-solid fa-utensils text-[#d4a359]"></i>
+                            <span>Dinner Hours</span>
+                        </div>
+                        <p class="text-[11px] font-bold text-[#2b0e14]"><?php echo htmlspecialchars($settings['dinner_timing'] ?? '07:00 PM – 10:00 PM'); ?></p>
+                        <span class="text-[10px] text-rose-700 font-bold block">Dinner Thalis Not Available</span>
+                    </div>
+
+                </div>
+
+                <!-- Dining Policy Disclaimer Box -->
+                <div class="p-3.5 rounded-2xl bg-amber-50 border border-amber-200 flex items-center justify-between">
+                    <div class="flex items-center space-x-2.5">
+                        <i class="fa-solid fa-circle-exclamation text-amber-700 text-sm"></i>
+                        <span class="text-xs font-bold text-amber-900"><?php echo htmlspecialchars($settings['dining_notice'] ?? 'No 24/7 In-Room Dining (Orders accepted during meal hours)'); ?></span>
+                    </div>
+                    <span class="px-2.5 py-1 rounded-full text-[10px] font-black bg-[#2b0e14] text-[#f3cf8a] shrink-0 ml-2">
+                        Dial Intercom <?php echo htmlspecialchars($settings['intercom_number'] ?? '#222'); ?>
+                    </span>
                 </div>
 
                 <!-- Quick Action Buttons -->
@@ -181,24 +196,24 @@ $diningSlides = array_values($diningSlides);
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             
-            <!-- Service 1: 24/7 Room Service -->
+            <!-- Service 1: In-Room Dining & Service -->
             <div class="p-8 rounded-3xl bg-white border border-[#d4a359]/30 hover:border-[#d4a359] shadow-sm hover:shadow-2xl transition duration-300 space-y-5 flex flex-col justify-between group">
                 <div class="space-y-4">
                     <div class="flex items-center justify-between">
                         <div class="w-14 h-14 rounded-2xl bg-[#2b0e14] text-[#f3cf8a] group-hover:scale-110 transition duration-300 flex items-center justify-center text-2xl shadow-lg border border-[#d4a359]/40">
                             <i class="fa-solid fa-bell-concierge"></i>
                         </div>
-                        <span class="px-3 py-1 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-800 border border-emerald-300">
-                            24 Hours Active
+                        <span class="px-3 py-1 rounded-full text-[10px] font-bold bg-amber-50 text-amber-900 border border-amber-300">
+                            Meal Hours Active
                         </span>
                     </div>
-                    <h3 class="font-serif text-xl font-bold text-[#2b0e14] group-hover:text-[#b88738] transition">24/7 In-Room Dining & Service</h3>
+                    <h3 class="font-serif text-xl font-bold text-[#2b0e14] group-hover:text-[#b88738] transition">In-Room Dining & Room Service</h3>
                     <p class="text-xs text-slate-600 leading-relaxed font-light">
-                        Round-the-clock room service delivering delicious hot meals, refreshing tea/coffee, extra linens, and luxury dental kits with just one phone call from your room intercom.
+                        Prompt room service delivering delicious fresh meals, morning tea/coffee, and fresh sanitized linens during restaurant meal hours. (Notice: No 24/7 in-room dining).
                     </p>
                 </div>
                 <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
-                    <span class="font-bold text-[#2b0e14]"><i class="fa-solid fa-phone-volume text-[#d4a359] mr-1.5"></i> Dial Intercom #9</span>
+                    <span class="font-bold text-[#2b0e14]"><i class="fa-solid fa-phone-volume text-[#d4a359] mr-1.5"></i> Dial Intercom #222</span>
                     <i class="fa-solid fa-circle-check text-emerald-600"></i>
                 </div>
             </div>
@@ -211,16 +226,16 @@ $diningSlides = array_values($diningSlides);
                             <i class="fa-solid fa-utensils"></i>
                         </div>
                         <span class="px-3 py-1 rounded-full text-[10px] font-bold bg-[#f5efe6] text-[#2b0e14] border border-[#d4a359]/40 font-mono">
-                            7:00 AM - 11:00 PM
+                            8:00 AM - 10:00 PM
                         </span>
                     </div>
                     <h3 class="font-serif text-xl font-bold text-[#2b0e14] group-hover:text-[#b88738] transition">In-House Multi-Cuisine Restaurant</h3>
                     <p class="text-xs text-slate-600 leading-relaxed font-light">
-                        Relish authentic Odia culinary recipes, sizzling tandoori items, rich North Indian curries, and South Indian morning buffet breakfasts made fresh every morning.
+                        Relish authentic Odia culinary recipes, rich North Indian curries, savory evening snacks, and fresh A La Carte breakfast dishes prepared fresh to order with local pure spices.
                     </p>
                 </div>
                 <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
-                    <span class="font-bold text-[#2b0e14]"><i class="fa-solid fa-bowl-food text-[#d4a359] mr-1.5"></i> Pure & Fresh Spices</span>
+                    <span class="font-bold text-[#2b0e14]"><i class="fa-solid fa-bowl-food text-[#d4a359] mr-1.5"></i> Fresh A La Carte Menu</span>
                     <i class="fa-solid fa-circle-check text-emerald-600"></i>
                 </div>
             </div>
@@ -255,9 +270,19 @@ $diningSlides = array_values($diningSlides);
                             <i class="fa-solid fa-square-parking"></i>
                         </div>
                         <span class="px-3 py-1 rounded-full text-[10px] font-bold bg-purple-50 text-purple-800 border border-purple-300">
-                            24/7 CCTV Monitored
+                            Front Side Parking
                         </span>
                     </div>
+                    <h3 class="font-serif text-xl font-bold text-[#2b0e14] group-hover:text-[#b88738] transition">Hotel Front-Side Self Parking</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed font-light">
+                        Free secure front-side self parking for guest cars and two-wheelers under 24-hour CCTV surveillance. (Please note: Basement parking is not available).
+                    </p>
+                </div>
+                <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                    <span class="font-bold text-[#2b0e14]"><i class="fa-solid fa-shield-halved text-[#d4a359] mr-1.5"></i> Free Self Parking</span>
+                    <i class="fa-solid fa-circle-check text-emerald-600"></i>
+                </div>
+            </div>
                     <h3 class="font-serif text-xl font-bold text-[#2b0e14] group-hover:text-[#b88738] transition">Secure Valet & Bus Parking</h3>
                     <p class="text-xs text-slate-600 leading-relaxed font-light">
                         Spacious, safe on-premise parking for personal cars, two-wheelers, and large tourist buses under 24-hour HD CCTV surveillance and dedicated security guard watch.

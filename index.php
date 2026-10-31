@@ -72,7 +72,7 @@ if (empty($featuredRooms)) {
                         <div>
                             <span class="text-[9px] text-slate-500 font-bold uppercase tracking-wider block">PRICE STARTS FROM</span>
                             <div class="flex items-baseline">
-                                <span class="text-xl sm:text-2xl font-black text-[#2b0e14]">₹1,299</span>
+                                <span class="text-xl sm:text-2xl font-black text-[#2b0e14]">₹1,680</span>
                                 <span class="text-[10px] sm:text-[11px] text-slate-500 font-medium ml-1">/ NIGHT</span>
                             </div>
                         </div>
